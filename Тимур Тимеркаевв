@@ -1,0 +1,62 @@
+#1
+#import threading
+#import time
+
+#def quick_operation(a, b):
+#    return a + b
+
+#def slow_operation(a):
+#    time.sleep(a)
+
+#def main():
+#    a = 5
+#    b = 10
+
+    # Создаем потоки
+#    quick_thread = threading.Thread(target=quick_operation, args=(a, b))
+#    slow_thread = threading.Thread(target=slow_operation, args=(a,))
+
+    # Запускаем потоки
+#    quick_thread.start()
+#    slow_thread.start()
+
+    # Ждем, пока потоки завершатся
+#    quick_thread.join()
+#    slow_thread.join()
+
+#if __name__ == "__main__":
+#    main()
+
+#2
+import asyncio
+
+async def answer_phone():
+    print("Отвечаю на телефонный звонок...")
+    await asyncio.sleep(3)  # Имитация длительности задачи
+    print("Телефонный звонок обработан.")
+
+async def receive_visitors():
+    print("Принимаю посетителей...")
+    await asyncio.sleep(2)  # Имитация длительности задачи
+    print("Посетители приняты.")
+
+async def book_flights():
+    print("Бронирую билеты на самолет...")
+    await asyncio.sleep(5)  # Имитация длительности задачи
+    print("Билеты на самолет забронированы.")
+
+async def check_schedules():
+    print("Проверяю графики встреч...")
+    await asyncio.sleep(4)  # Имитация длительности задачи
+    print("Графики встреч проверены.")
+
+async def fill_documents():
+    print("Заполняю документы...")
+    await asyncio.sleep(1)  # Имитация длительности задачи
+    print("Документы заполнены.")
+
+async def secretary():
+    tasks = [answer_phone(), receive_visitors(), book_flights(), check_schedules(), fill_documents()]
+    await asyncio.gather(*tasks)
+
+asyncio.run(secretary())
